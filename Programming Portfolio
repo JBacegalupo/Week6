@@ -65,3 +65,38 @@ if __name__ == "__main__":
     print(f"the text {input} has been obfusicated to {obfusication(input)}")
 
 #### Challenge 5 ####
+import random
+import string
+
+
+def obfusication(input):
+    Strlistcounter = 0
+    interval = random.randint(2,20)
+    string_list = list(input)
+    Encrypt_list = []
+    while len(Encrypt_list) < (interval * len(input) + len(input)):
+        Encrypt_list.append(string_list[Strlistcounter])
+        Strlistcounter +=1
+        if Strlistcounter == len(input):
+            return "".join(Encrypt_list)
+        else:
+            for x in range(0,interval):
+                if Encrypt_list[-1:][0] == " ":
+                    pass
+                else:
+                    Encrypt_list.append(random.choice(string.ascii_lowercase))
+
+def deobfutication(input):
+    firstword = input.split(" ")[0]
+
+
+
+if __name__ == "__main__":
+    input = input("Please enter a string ")
+    obfusicatedinput = (obfusication(input))
+    print(obfusicatedinput)
+    deobfutication(obfusicatedinput)
+
+
+
+#### challenge 6 ####
