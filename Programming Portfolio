@@ -87,17 +87,16 @@ def obfusication(input):
                     Encrypt_list.append(random.choice(string.ascii_lowercase))
 
 
-
-
-
 if __name__ == "__main__":
     input = input("Please enter a string ")
     obfusicatedinput = (obfusication(input))
     print(obfusicatedinput)
 
+
 #####################
 
 #### challenge 6 ####
+
 import random
 import string
 
@@ -130,13 +129,7 @@ def deobfutication(currentword, interval):
     return "".join(finalwordlist)
 
 
-
-
-
-if __name__ == "__main__":
-    finalsetencelist = list()
-    input = input("Please enter a string ")
-    obfusicatedinput = (obfusication(input))
+def deobfusticationhandler(input):
     print(obfusicatedinput[0])
     obfusicatedlist = obfusicatedinput[0].split(" ")
     if len(obfusicatedlist) == 1:
@@ -144,5 +137,12 @@ if __name__ == "__main__":
 
     else:
         for wordindex in range(0, len(obfusicatedlist)):
-           finalsetencelist.append(deobfutication(obfusicatedlist[wordindex], obfusicatedinput[1]))
-    print(" ".join(finalsetencelist))
+            finalsetencelist.append(deobfutication(obfusicatedlist[wordindex], obfusicatedinput[1]))
+    return " ".join(finalsetencelist)
+
+if __name__ == "__main__":
+    finalsetencelist = list()
+    input = input("Please enter a string ")
+    obfusicatedinput = (obfusication(input))
+    print(obfusicatedinput)
+    print(deobfusticationhandler(obfusicatedinput))
