@@ -86,8 +86,7 @@ def obfusication(input):
                 else:
                     Encrypt_list.append(random.choice(string.ascii_lowercase))
 
-def deobfutication(input):
-    firstword = input.split(" ")[0]
+
 
 
 
@@ -95,8 +94,55 @@ if __name__ == "__main__":
     input = input("Please enter a string ")
     obfusicatedinput = (obfusication(input))
     print(obfusicatedinput)
-    deobfutication(obfusicatedinput)
 
-
+#####################
 
 #### challenge 6 ####
+import random
+import string
+
+
+def obfusication(input):
+    Strlistcounter = 0
+    interval = random.randint(2,20)
+    string_list = list(input)
+    Encrypt_list = []
+    while len(Encrypt_list) < (interval * len(input) + len(input)):
+        Encrypt_list.append(string_list[Strlistcounter])
+        Strlistcounter +=1
+        if Strlistcounter == len(input):
+            return "".join(Encrypt_list) , interval
+        else:
+            for x in range(0,interval):
+                if Encrypt_list[-1:][0] == " ":
+                    pass
+                else:
+                    Encrypt_list.append(random.choice(string.ascii_lowercase))
+
+def deobfutication(currentword, interval):
+    ### current word , interval
+    currentposition = 0
+    finalwordlist = list()
+    while currentposition < len(currentword):
+        if not currentposition > len(currentword):
+            finalwordlist.append(currentword[currentposition])
+            currentposition += interval + 1
+    return "".join(finalwordlist)
+
+
+
+
+
+if __name__ == "__main__":
+    finalsetencelist = list()
+    input = input("Please enter a string ")
+    obfusicatedinput = (obfusication(input))
+    print(obfusicatedinput[0])
+    obfusicatedlist = obfusicatedinput[0].split(" ")
+    if len(obfusicatedlist) == 1:
+        finalsetencelist.append(deobfutication(obfusicatedinput[0], obfusicatedinput[1]))
+
+    else:
+        for wordindex in range(0, len(obfusicatedlist)):
+           finalsetencelist.append(deobfutication(obfusicatedlist[wordindex], obfusicatedinput[1]))
+    print(" ".join(finalsetencelist))
